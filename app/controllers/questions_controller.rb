@@ -34,7 +34,7 @@ class QuestionsController < ApplicationController
   def hide
     @question.toggle!(:hidden)
 
-    redirect_to question_path(:id)
+    redirect_to question_path(@question)
   end
 
   private
