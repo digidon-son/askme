@@ -6,7 +6,7 @@
   
   <div class="mt">
     <%= link_to fa_icon('pencil'), edit_question_path(@question), title: 'Изменить вопрос'%>
-    <%= hide_the_question %>
+    <%= hide_question(@question) %>
     <%= button_to fa_icon('trash-o'), question_path(@question), method: :delete, title: 'Удалить вопрос', form: { data: { turbo_confirm: "Вы уверены?" } } %>
   </div>
   

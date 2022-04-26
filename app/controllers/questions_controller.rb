@@ -32,9 +32,9 @@ class QuestionsController < ApplicationController
   def edit; end
 
   def hide
-    @question.update(hidden: !@question.hidden?)
+    @question.toggle!(:hidden)
 
-    redirect_to question_path
+    redirect_to question_path(:id)
   end
 
   private
