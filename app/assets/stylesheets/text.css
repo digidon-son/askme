@@ -7,7 +7,7 @@ a, button {
   color: #DC2F02;
 }
 
-a.hidden {
+.hidden {
   opacity: 50%;
 }
 
@@ -26,4 +26,8 @@ a.hidden {
 
 .text-sm {
   font-size: 80%;
+}
+
+.text-grey {
+  color: #a0a0a0;
 }
