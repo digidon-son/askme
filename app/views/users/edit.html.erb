@@ -1,5 +1,5 @@
 <div class="container">
-  <h2 class="title">Редактирвоание пользователя</h2>
+  <h2 class="title">Редактирование пользователя</h2>
 
   <% if @user.errors.any? %>
     <div class="mt">
@@ -11,6 +11,11 @@
 
   <div class="mt">
     <%= form_with model: @user, data: { turbo: false } do |form| %>
+      <p class="mb">
+        <%= form.label :header_color, 'Цвет шапки:' %>
+        <%= form.color_field :header_color%>
+      </p>
+
       <p><%= form.label :name, 'Имя' %></p>
       <p><%= form.text_field :name, class: 'form-text-field' %></p>
 

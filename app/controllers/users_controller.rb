@@ -39,6 +39,12 @@ class UsersController < ApplicationController
     redirect_to root_path, notice: 'Пользователь удалён'
   end
 
+  def repaint
+    @user.update(:header_color)
+
+    redirect_to root_path, notice: 'Хэдер изменён'
+  end
+
   private
 
   def user_params
