@@ -13,7 +13,7 @@
     <%= form_with model: @user, data: { turbo: false } do |form| %>
       <p class="mb">
         <%= form.label :header_color, 'Цвет шапки:' %>
-        <%= form.color_field :header_color%>
+        <%= form.color_field :header_color %>
       </p>
 
       <p><%= form.label :name, 'Имя' %></p>
