@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-  VALID_EMAIL_REGEXP = /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/
-  VALID_NICKNAME_REGEXP = /\A[\w_]*\Z/
+  VALID_EMAIL_REGEXP =  /\A[\w]+@[\w]+\.[a-z]+/
+  VALID_NICKNAME_REGEXP = /\A[\w]*\Z/
   has_secure_password
 
   before_save :downcase_nickname
