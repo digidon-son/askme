@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
     if @user.save
       redirect_to root_path, notice: 'Вы успешно зарегистрировались!'
-      session[:user_id] = user.id
+      session[:user_id] = @user.id
     else
       flash.now[:alert] = 'Вы неправильно заполнили поля формы регистрации'
       render :new
