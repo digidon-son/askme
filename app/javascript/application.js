@@ -3,3 +3,7 @@ import "@hotwired/turbo-rails"
 import "controllers"
 import "trix"
 import "@rails/actiontext"
+
+document.addEventListener("trix-file-accept", (e) => {
+    e.preventDefault()
+})

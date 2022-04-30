@@ -13,4 +13,7 @@
  *= require question
  *= require message
  */
- 
+
+.trix-button-group--file-tools {
+    display: none !important;
+}
