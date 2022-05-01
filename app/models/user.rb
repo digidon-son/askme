@@ -10,7 +10,7 @@ class User < ApplicationRecord
 
   validates :nickname, uniqueness: true, length: { maximum: 40 }, format: { with: VALID_NICKNAME_REGEXP }
 
-  validates :header_color, length: { maximum: 7 }, format: { with: VALID_HEAD_COLOR_REGEXP }
+  validates :header_color, length: { minimum: 4, maximum: 7 }, format: { with: VALID_HEAD_COLOR_REGEXP }
 
   def downcase_nickname
     nickname.downcase!
