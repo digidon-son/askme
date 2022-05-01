@@ -1,5 +1,5 @@
-<div class="mb-sm">
-  <%= simple_format(question.body) %>
+<div class="mb-sm line-wrapper">
+  <%= question.body %>
 </div>
 
 <div class="text-sm question-footer">
@@ -10,7 +10,7 @@
   <div>
     <%= link_to fa_icon('pencil'), edit_question_path(question), title: 'Изменить вопрос'%>
     <%= hide_question(question) %>
-    <%= button_to fa_icon('trash-o'), question_path(question), method: :delete, title: 'Удалить вопрос', form: { data: { turbo_confirm: "Вы уверены?" } } %>
+    <%= button_to fa_icon('trash-o'), question_path(question), method: :delete, title: 'Удалить вопрос', form: { data: { turbo_confirm: 'Вы уверены?' } } %>
   </div>
 </div>
 

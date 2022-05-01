@@ -39,3 +39,7 @@ a, button {
 .text-bold {
   font-weight: bold;
 }
+
+.line-wrapper {
+  white-space: pre-line;
+}
