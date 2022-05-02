@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  VALID_EMAIL_REGEXP =  /\A\w+@\w+\.[a-z]+/
+  VALID_EMAIL_REGEXP = /\A\w+@\w+\.[a-z]+/
   VALID_NICKNAME_REGEXP = /\A\w*\Z/
   VALID_HEAD_COLOR_REGEXP = /\A#\h{3}{1,2}\z/
   has_secure_password
@@ -11,6 +11,8 @@ class User < ApplicationRecord
   validates :nickname, uniqueness: true, length: { maximum: 40 }, format: { with: VALID_NICKNAME_REGEXP }
 
   validates :header_color, length: { minimum: 4, maximum: 7 }, format: { with: VALID_HEAD_COLOR_REGEXP }
+
+  has_many :questions, dependent: :destroy
 
   def downcase_nickname
     nickname.downcase!
