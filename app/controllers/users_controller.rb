@@ -40,7 +40,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @questions = @user.questions
+    @questions = @user.questions.order(created_at: :desc)
     @question = Question.new(user: @user)
   end
 
@@ -54,7 +54,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-    def user_params
-      params.require(:user).permit(:name, :nickname, :email, :password, :password_confirmation, :header_color)
-    end
+  def user_params
+    params.require(:user).permit(:name, :nickname, :email, :password, :password_confirmation, :header_color)
   end
+end
