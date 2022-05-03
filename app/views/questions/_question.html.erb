@@ -1,4 +1,10 @@
 <div class="mb-sm line-wrapper">
+  <% unless question.author_id == question.user_id %>
+    Автор вопроса <%= link_to display_nickname(question.author), user_path(question.author), class: 'mr-sm' %>
+  <% else %>
+    <span class="text-underline">Анонимный вопрос</span>
+  <% end %>
+
   <%= question.body %>
 </div>
 

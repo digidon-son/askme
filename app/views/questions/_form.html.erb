@@ -8,7 +8,8 @@
   <% end %>
 
   <%= form.hidden_field :user_id %>
-
+  <%= form.hidden_field :author_id, value: author %>
+  
   <p><%= form.label :body, "Текст вопроса" %></p>
   <p><%= form.text_area :body, rows: 5, class: "form-text-area" %></p>
 
