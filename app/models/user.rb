@@ -14,6 +14,9 @@ class User < ApplicationRecord
 
   has_many :questions, dependent: :destroy
 
+  include Gravtastic
+  gravtastic(secure: true, filetype: :png, size: 100, default: 'retro')
+
   def downcase_nickname
     nickname.downcase!
   end
