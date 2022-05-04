@@ -11,8 +11,11 @@
 <div class="text-sm question-footer">
   <div class="text-grey">
     <%= l(question.created_at, format: :short) %>
+
     <% if question.author_id %>
-      <p>Автор вопроса <%= link_to display_nickname(question.author), user_path(question.author), class: 'mr-sm' %></p>
+      <p>Автор вопроса <%= link_to display_nickname(question.author), user_path(question.author)%></p>
+    <% else %>
+      <p class="text-underline">Вопрос задал неавторизованный пользователь</p>
     <% end %>
   </div>
 
