@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  extend FriendlyId
+  friendly_id :nickname, use: :slugged
+
   VALID_EMAIL_REGEXP = /\A\w+@\w+\.[a-z]+/
   VALID_NICKNAME_REGEXP = /\A\w*\Z/
   VALID_HEAD_COLOR_REGEXP = /\A#\h{3}{1,2}\z/
