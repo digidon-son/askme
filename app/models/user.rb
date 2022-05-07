@@ -26,7 +26,7 @@ class User < ApplicationRecord
     nickname
   end
 
-  def self.find(input)
-    find_by_nickname(input)
-  end
+  # def self.find(input)
+  #   find_by_nickname(input)
+  # end
 end

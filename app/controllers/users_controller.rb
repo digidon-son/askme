@@ -49,7 +49,7 @@ class UsersController < ApplicationController
   end
 
   def set_user
-    @user = User.find(params[:id])
+    @user = User.find_by_nickname(params[:id])
   end
 
   def user_params
