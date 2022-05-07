@@ -1,7 +1,4 @@
 class User < ApplicationRecord
-  extend FriendlyId
-  friendly_id :nickname, use: :slugged
-
   VALID_EMAIL_REGEXP = /\A\w+@\w+\.[a-z]+/
   VALID_NICKNAME_REGEXP = /\A\w*\Z/
   VALID_HEAD_COLOR_REGEXP = /\A#\h{3}{1,2}\z/
@@ -22,5 +19,13 @@ class User < ApplicationRecord
 
   def downcase_nickname
     nickname.downcase!
+  end
+
+  def to_param
+    nickname
+  end
+
+  def self.find(input)
+    input.to_i == 0 ? find_by_nickname(input) : super
   end
 end
