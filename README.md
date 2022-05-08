@@ -1,24 +1,14 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Application ask me. Ask.fm app clone
 
-Things you may want to cover:
+### Written in:
 
 * Ruby version -- 3.1.1
+* Rails verison -- 7.0.2
 
-* System dependencies 
+### Used database
+* For development: sqlite
+* For production: postgress
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### The deployed application can be found on [Heroku](https://mysterious-castle-81344.herokuapp.com/)
