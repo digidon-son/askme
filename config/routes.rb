@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root to: 'questions#index'
+  resources :questions, param: :user_nickname
   resources :questions do
     member do
       put 'hide'

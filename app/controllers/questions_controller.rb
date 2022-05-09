@@ -40,7 +40,7 @@ class QuestionsController < ApplicationController
   end
 
   def new
-    @user = User.find_by_nickname(params[:user_id])
+    @user = User.find_by_nickname(params[:user_nickname])
     @question = Question.new(user: @user)
   end
 
@@ -59,6 +59,6 @@ class QuestionsController < ApplicationController
   end
 
   def set_question_for_current_user
-    @question = current_user.questions.find(params[:id])
+    @question = current_user.questions.find_by(params[:nickname])
   end
 end
