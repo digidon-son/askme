@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  before_action :ensure_current_user, only: %i[update destroy edit]
+  before_action :ensure_current_user, only: %i[update destroy edit hide]
   before_action :set_question_for_current_user, only: %i[update destroy edit hide]
 
   def create
@@ -40,7 +40,7 @@ class QuestionsController < ApplicationController
   end
 
   def new
-    @user = User.find_by_nickname(params[:user_nickname])
+    @user = User.find_by(params[:user_id])
     @question = Question.new(user: @user)
   end
 
@@ -59,6 +59,6 @@ class QuestionsController < ApplicationController
   end
 
   def set_question_for_current_user
-    @question = current_user.questions.find_by(params[:nickname])
+    @question = current_user.questions.find(params[:id])
   end
 end
