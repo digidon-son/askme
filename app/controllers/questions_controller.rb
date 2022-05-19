@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class QuestionsController < ApplicationController
   before_action :ensure_current_user, only: %i[update destroy edit hide]
   before_action :set_question_for_current_user, only: %i[update destroy edit hide]
@@ -8,19 +10,12 @@ class QuestionsController < ApplicationController
     @question = Question.new(question_params)
     @question.author = current_user
 
-    if @question.save
+    if check_captcha(@question) && @question.save
       redirect_to user_path(@question.user), notice: 'Новый вопрос создан!'
     else
       flash.now[:alert] = 'Поле вопроса пустое'
       render :new
     end
-  end
-
-  def update
-    question_params = params.require(:question).permit(:body, :answer)
-    @question.update(question_params)
-
-    redirect_to user_path(@question.user), notice: 'Вопрос сохранен!'
   end
 
   def destroy
@@ -30,8 +25,12 @@ class QuestionsController < ApplicationController
     redirect_to user_path(@user), notice: 'Вопрос удален!'
   end
 
-  def show
-    @question = Question.find(params[:id])
+  def edit; end
+
+  def hide
+    @question.toggle!(:hidden)
+
+    redirect_to question_path(:id)
   end
 
   def index
@@ -44,15 +43,26 @@ class QuestionsController < ApplicationController
     @question = Question.new(user: @user)
   end
 
-  def edit; end
+  def show
+    @question = Question.find(params[:id])
+  end
 
-  def hide
-    @question.toggle!(:hidden)
+  def update
+    question_params = params.require(:question).permit(:body, :answer)
+    @question.update(question_params)
 
-    redirect_to question_path(:id)
+    redirect_to user_path(@question.user), notice: 'Вопрос сохранен!'
   end
 
   private
+
+  def check_captcha(model)
+    if current_user.present?
+      true
+    else
+      verify_recaptcha(model:)
+    end
+  end
 
   def ensure_current_user
     redirect_with_alert unless current_user.present?
