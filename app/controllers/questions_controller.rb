@@ -14,7 +14,7 @@ class QuestionsController < ApplicationController
       redirect_to user_path(@question.user), notice: 'Новый вопрос создан!'
     else
       flash.now[:alert] = 'Поле вопроса пустое'
-      render :new
+      redirect_to request.referrer
     end
   end
 
